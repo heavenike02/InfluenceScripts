@@ -1,5 +1,5 @@
 
-### Scripts Overview f
+### Scripts Overview 
 Python Scripts to Automate the Influence Process / Extract Transform and Load (ETL) for the Influence Data Modal
 
 

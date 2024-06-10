@@ -1,0 +1,50 @@
+import csv
+import re
+import os
+
+# Specify the path to your CSV file
+csv_file_path = r"C:\Users\I586445\Downloads\FPA34 v5 (Orca) (1).csv"
+# Construct the output file path
+output_folder = os.path.dirname(csv_file_path)
+output_file_path = os.path.join(output_folder, "Consumer Foreign keys.csv")
+
+# Open the CSV file for reading and the output file for writing
+with open(csv_file_path, 'r', encoding='utf-8-sig') as file, open(output_file_path, 'w', newline='', encoding='utf-8') as output_file:
+    # Create a CSV reader object
+    csv_reader = csv.reader(file)
+    # Create a CSV writer object
+    csv_writer = csv.writer(output_file)
+    
+    # Write the header row with selected columns
+    csv_writer.writerow(["ISSUEKEY", "LINK", "LINK_TYPE"])
+    
+    # Process the header row to get the column indices
+    header = next(csv_reader)
+    column_indices = {}
+    for column_name in ["ISSUEKEY", "CONSUMER"]:
+        try:
+            column_indices[column_name] = header.index(column_name)
+        except ValueError:
+            # Handle the case if any of the required columns are not found in the header
+            print(f"Column '{column_name}' not found in the CSV file.")
+            exit(1)
+
+    # Process each row and write selected columns to the output file
+    for row in csv_reader:
+        issue_key = row[column_indices["ISSUEKEY"]]
+        consumer = row[column_indices["CONSUMER"]]
+        
+        # Extract influence links using regex
+        influence_links = re.findall(r"\bhttps://influence.sap.com.*?(\d{6})", consumer)
+        # Extract ifr links using regex
+        ifr_links = re.findall(r"https://IFP\.BSS\.NET\.SAP/sap/bc/bsp/pct/ifr_app/#/innovation/.*$", consumer)
+
+        # Write influence links to the output file
+        for link in influence_links:
+            csv_writer.writerow([issue_key, link, "Influence Link"])
+
+        # Write ifr links to the output file
+        for link in ifr_links:
+            csv_writer.writerow([issue_key, link, "Ifr Link"])
+
+print("Code executed successfully.")

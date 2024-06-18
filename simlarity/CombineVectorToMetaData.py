@@ -2,7 +2,7 @@ import pandas as pd
 
 
 # Paths to the CSV files
-full_similar_features_csv = 'full_similar_product_features.csv'
+full_similar_features_csv = 'similar_product_features.csv'
 sap_analytics_csv = 'SAP Analytics Cloud & SAP Digital Boardroom.csv'
 
 try:

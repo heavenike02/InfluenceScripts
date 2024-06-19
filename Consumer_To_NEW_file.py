@@ -3,7 +3,7 @@ import re
 import os
 
 # Specify the path to your CSV file
-csv_file_path = r"C:\Users\I586445\Downloads\10-06 model\FPA34 10_06.csv"
+csv_file_path = r"C:\Users\I586445\Downloads\17-06 Model Update\FPA34 17_06.csv"
 # Construct the output file path
 output_folder = os.path.dirname(csv_file_path)
 output_file_path = os.path.join(output_folder, "Consumer Foreign keys.csv")

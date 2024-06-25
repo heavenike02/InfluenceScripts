@@ -7,7 +7,7 @@ influence = None
 
 # Load CSV files into Pandas DataFrames
 try:
-    influence = Pd.read_csv(Influence_CSV, usecols=['Request_ID', 'Idea_Title', 'Description', 'Status'])
+    influence = Pd.read_csv(Influence_CSV, usecols=['Request_ID', 'Idea_Title', 'Description', 'Status','Voting Score'])
 except Exception as e:
     print(f"Error reading the CSV file: {e}")
 

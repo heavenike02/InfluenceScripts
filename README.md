@@ -15,7 +15,7 @@ Python Scripts to Automate the Influence Process / Extract Transform and Load (E
 
 #### 3. Compare Influence Descriptions for Similarity
 
-- **Description**: Compares influence descriptions to identify highly similar pairs using NLP with spaCy.
+- **Description**: Compares influence descriptions to identify highly similar pairs using NLP with sentece tranfromers to convert requests to vectors compare via cosinse simialarity.
 - **Value**: Automates the identification of similar descriptions, aiding in efficient review and categorization.
 
 #### 4. Filter and Extract Key Information from CSV
